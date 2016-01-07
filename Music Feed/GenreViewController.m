@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Genre";
+    
     self.fetchedResultsController = [Genre MR_fetchAllSortedBy:@"name" ascending:NO withPredicate:nil groupBy:nil delegate:self];
     
     NSError *error;
@@ -25,16 +26,9 @@
         // Update to handle the error appropriately.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
-
-    
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+//overrides the super class configure cell to layout the cell accordingly
 -(void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Genre *genre = [self.fetchedResultsController objectAtIndexPath:indexPath];

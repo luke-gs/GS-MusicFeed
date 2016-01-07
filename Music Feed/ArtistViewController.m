@@ -18,8 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Artist";
+    
     self.fetchedResultsController = [Artist MR_fetchAllSortedBy:@"name" ascending:NO withPredicate:nil groupBy:nil delegate:self];
-    // Do any additional setup after loading the view.
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -29,12 +29,7 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
+//overrides the super class configure cell to layout the cell accordingly
 -(void) configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Artist *artist = [self.fetchedResultsController objectAtIndexPath:indexPath];

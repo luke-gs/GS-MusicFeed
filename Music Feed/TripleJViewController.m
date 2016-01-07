@@ -82,7 +82,7 @@ static NSString *const TripleJCellIdentifier = @"tripleJCellIdentifier";
  */
 -(void) fetchRemoteXMLData
 {
-    
+    // using the Network managers singleton fetch the json data
     [[NetworkManager sharedManager] fetchTripleJDataWithCompletionHandler:^(NSDictionary *tripleJData, NSError *error) {
         
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {

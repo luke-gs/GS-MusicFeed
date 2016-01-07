@@ -150,7 +150,7 @@ static NSString *const MusicFeedCellIdentifier = @"musicFeedCell";
         Song *song = [self.fetchedResultsController objectAtIndexPath:indexPath];
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
             Song *localSong = [song MR_inContext:localContext];
-            [localSong MR_deleteEntity];
+            [localSong MR_deleteEntityInContext:localContext];
         }];
     }
     else if( editingStyle == UITableViewCellEditingStyleInsert) {
@@ -261,7 +261,6 @@ static NSString *const MusicFeedCellIdentifier = @"musicFeedCell";
     AddSongViewController *addSongVC = [[AddSongViewController alloc]init];
     addSongVC.myDelegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:addSongVC];
-    
     
     //bar button item
     [self presentViewController:navigationController animated:YES completion:nil];
